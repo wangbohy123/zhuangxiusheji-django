@@ -1,0 +1,85 @@
+{% extends 'base/Base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title>公司中心</title>
+{% endblock title %}
+{% block header %}
+    	<div class="header head-top">
+			<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<a href="{% url 'user:index' %}">装修设计<span>网站</span></a>
+					</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+								<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+												<a href="#"><i class="icon4"></i></a>
+						</div>
+							<div class="clearfix"></div>
+				</div>
+				<div class="top-menu">
+					<span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/>  </span>
+						<ul>
+						    <li><a href="{% url 'user:index_for_company' %}" >主页</a></li>
+                            <li><a href="{% url 'user_center:show_for_company' %}" class="active">案例中心</a></li>
+                            <li><a href="{% url 'user_center:corporate' %}">公司资料</a></li>
+                            <li><a href="{% url 'draw:image' %}">在线绘图</a></li>
+                            <li><a href="{% url 'user:del_session' %}">退出登录</a></li>
+
+							<script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+
+												<div class="clearfix"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+{% endblock header %}
+
+{% block body %}
+	<div class="container">
+    {% if user.if_passed == False %}
+        <div class="gallery">
+            <h1 style="padding: 30px;">没有通过审核哟（我们会在五个工作日内完成对您的审核）</h1>
+            <h6 style="padding: 5px 50px 30px 30px;">*请通过公司资料查看审核状态</h6>
+        </div>
+    {% endif %}
+    {% if user.if_passed == True %}
+	<div class="gallery">
+		<h3>案例中心</h3>
+        <ul>
+            <li><h2><a href="{% url 'anli:company_case' %}">我的案例</a></h2></li>
+            <br/>
+            <li><a href="#">Choose a company to submit case</a></li>
+        </ul>
+        <br/><br/><br/><br/>
+        <ul>
+            <li><h2><a href="{% url 'anli:company_case' %}">查看用户案例</a></h2></li>
+            <br/>
+            <li><a href="#">View the user case</a></li>
+        </ul>
+        <br/><br/><br/><br/>
+        <br/><br/><br/><br/>
+        <div align="right">
+        <p>我们拥有最优质的资源以及最自由的交流平台</p>
+        </div>
+	<!--script-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+			<script type="text/javascript" src="{% static 'js/nivo-lightbox.min.js'%}"></script>
+				<script type="text/javascript">
+				$(document).ready(function(){
+				    $('#nivo-lightbox-demo a').nivoLightbox({ effect: 'fade' });
+				});
+				</script>
+
+			<!---->
+    </div>
+    {% endif %}
+</div>
+{% endblock body %}

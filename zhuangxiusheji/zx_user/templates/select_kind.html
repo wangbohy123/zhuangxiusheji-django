@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{# 注册页面 #}
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>register</title>
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/normalize.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/demo.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'login/css/component.css' %}" />
+<!--[if IE]>
+	<script src="js/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+		<div class="container demo-1">
+
+				<div id="large-header" class="large-header">
+                    <br/><br/><br/><br/><br/>
+					<div align="center">
+						<h3>请选择用户种类</h3>
+						<form method="post" action="{% url 'user:kind_handel' %}">
+                            {% csrf_token %}
+                            <div class="input_outer">
+                                    <span class="u_user"></span>
+
+									<select name="user_kind"  >
+										<option  value="ordinary_user">普通用户</option>
+										<option  value="company_user">公司用户</option>
+									</select>
+
+                            </div>
+                            <div class="mb2">
+                                <div class="mb2"><a class="act-but submit" href="javascript:;" style="color: #FFFFFF">
+                                    <input type="submit" value="确认" />
+                                </a>
+                                </div>
+							</div>
+						</form>
+					</div>
+				</div>
+		</div>
+
+		<script src="{% static 'login/js/jquery.min.js' %}"></script>
+		<script src="{% static 'login/js/EasePack.min.js' %}"></script>
+		<script src="{% static 'login/js/rAF.js' %}"></script>
+		<script src="{% static 'login/js/demo-1.js' %}"></script>
+		<div style="text-align:center;">
+		</div>
+	</body>
+</html>

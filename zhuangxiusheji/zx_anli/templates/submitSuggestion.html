@@ -1,0 +1,79 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block header %}
+    	<div class="header head-top">
+			<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<a href="{% url 'user:index' %}">装修设计<span>网站</span></a>
+					</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+								<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+												<a href="#"><i class="icon4"></i></a>
+						</div>
+							<div class="clearfix"></div>
+				</div>
+				<div class="top-menu">
+					<span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/>  </span>
+						<ul>
+						    <li><a href="{% url 'user:index_for_company' %}" >主页</a></li>
+                            <li><a href="{% url 'user_center:show_for_company' %}" class="active">案例中心</a></li>
+                            <li><a href="{% url 'user_center:corporate' %}">公司资料</a></li>
+                            <li><a href="{% url 'draw:image' %}">在线绘图</a></li>
+                            <li><a href="{% url 'user:del_session' %}">退出登录</a></li>
+							<script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+
+												<div class="clearfix"></div>
+					</ul>
+				</div>
+
+{% block content %}
+<div class="fir" align="center" style="padding: 60px">
+
+    <div class="sec" style="padding-top:70px;">
+        <p align="center" style="margin-bottom:60px;width:620px;color: red">
+            {{ caseName }}
+        </p>
+        <h3 align="left" style="color: whitesmoke; padding: 30px">案例图片：</h3>
+        {% for image in caseImage %}
+            <img src="{{ image.image.url }}" width="350px">
+        {% endfor %}
+        <h3 align="left" style="color: whitesmoke; padding: 30px">案例介绍：</h3>
+        <p>
+            <textarea rows="16" cols="100" name="case_text"  readonly="readonly" style="border-radius:10px; background-color:#222; color:white;resize:none; border: 2px solid #009688;">{{ caseText }}</textarea>
+        </p>
+        <h3 align="left" style="color: whitesmoke; padding: 30px">您的回应：</h3>
+
+        {% if answer == False %}
+        <form action="{% url 'anli:suggestion_handel' %}" method="post">
+        {% csrf_token %}
+            <p>
+                <textarea rows="16" cols="100" name="suggestion"  style="border-radius:10px; background-color:#222; color:white;resize:none; border: 2px solid #009688;">在这里写下你对该用户案例的建议与指导方针</textarea>
+            </p>
+            <input type="hidden" value="{{ cid }}" name="cid">
+            <button type="submit">提交给用户</button>
+        </form>
+        {% endif %}
+
+        {% if answer == True  %}
+            <p>
+                <textarea rows="16" cols="100" name="suggestion"  readonly="readonly" style="border-radius:10px; background-color:#222; color:white;resize:none; border: 2px solid #009688;">{{ sugg }}</textarea>
+            </p>
+        {% endif %}
+
+    </div>
+
+
+</div>
+{% endblock content%}
+            </div>
+        </div>
+{% endblock header %}

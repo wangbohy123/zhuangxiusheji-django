@@ -1,0 +1,79 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block header %}
+    	<div class="header head-top">
+			<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<a href="{% url 'user:index' %}">装修设计<span>网站</span></a>
+					</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+								<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+												<a href="#"><i class="icon4"></i></a>
+						</div>
+							<div class="clearfix"></div>
+				</div>
+				<div class="top-menu">
+					<span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/>  </span>
+						<ul>
+						    <li><a href="{% url 'user:index_for_user' %}" >主页</a></li>
+                            <li><a href="{% url 'user_center:show' %}" class="active">案例中心</a></li>
+                            <li><a href="{% url 'user_center:personal' %}">个人资料</a></li>
+                            <li><a href="{% url 'draw:image' %}">在线绘图</a></li>
+                            <li><a href="{% url 'user:del_session' %}">退出登录</a></li>
+							<script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+
+												<div class="clearfix"></div>
+					</ul>
+				</div>
+
+{% block content %}
+<div class="fir" align="center" style="padding: 60px">
+<form method="post" action="{% url 'anli:case_handel' %}" enctype="multipart/form-data" >
+{% csrf_token %}
+    <div class="sec" style="padding-top:70px;">
+        <p align="center" style="margin-bottom:60px;width:620px;">
+            <input type="text" name="case_name" value="" placeholder="案例名"  style=" float:left;border-radius:5px;background-color:#222; color:#009688; border: 2px solid #009688;">
+            <input type="submit" value="提交案例"  style="float:right; border-radius:5px; background-color:#009688; color:white; border: 2px solid #009688;">
+            <input type="hidden" value="{{ company }}" name="companyid">
+        </p>
+        <p>
+            <textarea rows="16" cols="100" name="case_text"  style="border-radius:10px; background-color:#222; color:white;resize:none; border: 2px solid #009688;">在此输入案例文字简述，点击下面按钮上传图片</textarea>
+        </p>
+        选择空间大小：
+        <select name="area">
+            <option value="0-100">100平米以下</option>
+            <option value="100+">100平米以上</option>
+        </select>
+        选择装修风格：
+        <select name="case_style">
+            <option value="O">欧美风格</option>
+            <option value="D">东方风格</option>
+        </select>
+        选择户型：
+        <select name="huxing">
+            <option value="1">一室一厅</option>
+            <option value="2">两室两厅</option>
+            <option value="3">三室两厅</option>
+            <option value="4">其他</option>
+        </select>
+    </div>
+    <div style="padding: 20px; color: #9acfea; ">
+        <input type="file" name="case_image01"   >
+        <input type="file" name="case_image02"   >
+        <input type="file" name="case_image03"   >
+    </div>
+</form>
+</div>
+{% endblock content%}
+            </div>
+        </div>
+{% endblock header %}

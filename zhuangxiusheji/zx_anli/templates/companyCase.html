@@ -1,0 +1,83 @@
+{% extends 'base/Base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title>用户案例</title>
+{% endblock title %}
+{% block style %}
+    <style>
+
+</style>
+{% endblock %}
+{% block header %}
+    	<div class="header head-top">
+			<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<a href="{% url 'user:index' %}">装修设计<span>网站</span></a>
+					</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+								<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+												<a href="#"><i class="icon4"></i></a>
+						</div>
+							<div class="clearfix"></div>
+				</div>
+				<div class="top-menu">
+					<span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/>  </span>
+						<ul>
+						    <li><a href="{% url 'user:index_for_company' %}" >主页</a></li>
+                            <li><a href="{% url 'user_center:show_for_company' %}" class="active">案例中心</a></li>
+                            <li><a href="{% url 'user_center:corporate' %}">公司资料</a></li>
+                            <li><a href="{% url 'draw:image' %}">在线绘图</a></li>
+                            <li><a href="{% url 'user:del_session' %}">退出登录</a></li>
+							<script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+
+												<div class="clearfix"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+{% endblock header %}
+{% block body %}
+	<div class="container">
+	<div class="gallery">
+		<h3>用户案例</h3>
+    <table width="1000" style="height: 100px;">
+	<thead>
+		<th><tr>
+		<td>案例名</td>
+		<td>用户名</td>
+		<td>评论数</td>
+		</tr></th>
+
+	</thead>
+	 <tbody>
+     {% for case in cases %}
+        <tr>
+		<td><a href="{% url 'anli:company_suggestion' %}?cid={{ case.id }}">{{ case.anli_name }}</a></td>
+		<td>{{ case.ordinary_user.account_number }}</td>
+		<td></td>
+		</tr>
+     {% endfor %}
+	</tbody>
+</table>
+	<!--script-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+			<script type="text/javascript" src="{% static 'js/nivo-lightbox.min.js'%}"></script>
+				<script type="text/javascript">
+				$(document).ready(function(){
+				    $('#nivo-lightbox-demo a').nivoLightbox({ effect: 'fade' });
+				});
+				</script>
+
+			<!---->
+    </div>
+</div>
+{% endblock body %}

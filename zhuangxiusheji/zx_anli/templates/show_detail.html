@@ -1,0 +1,111 @@
+{% extends 'base/Base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title>公司介绍</title>
+{% endblock title %}
+{% block header %}
+    	<div class="header head-top">
+			<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<a href="{% url 'user:index' %}">装修设计<span>网站</span></a>
+					</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+								<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+												<a href="#"><i class="icon4"></i></a>
+						</div>
+							<div class="clearfix"></div>
+				</div>
+				<div class="top-menu">
+					<span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/>  </span>
+						<ul>
+						    <li><a href="{% url 'user:index_for_user' %}" >主页</a></li>
+                            <li><a href="{% url 'user_center:show' %}" class="active">案例中心</a></li>
+                            <li><a href="{% url 'user_center:personal' %}">个人资料</a></li>
+                            <li><a href="{% url 'draw:image' %}">在线绘图</a></li>
+                            <li><a href="{% url 'user:del_session' %}">退出登录</a></li>
+							<script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+
+												<div class="clearfix"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+{% endblock header %}
+{% block body %}
+	<div class="container">
+	<div class="gallery">
+    <h3>公司资料</h3>
+    <div class="col-md-8 furniture" style="float: left;padding: 30px">
+        <p style="font-size: larger">公司样例</p>
+				<div class="furniture-girds">
+					<div class="col-md-6 furniture-grid">
+					<a href="#" class="mask">
+					<div class="fur1">
+					  <img src="{{ image1 }}" class="img-responsive zoom-img" alt="/">
+						</div></a>
+					<a href="#" class="mask">
+					<div class="fur2">
+					  <img src="{{ image2 }}" class="img-responsive zoom-img" alt="/">
+						</div></a>
+				</div>
+				<div class="col-md-6 furniture-grid">
+				<a href="#" class="mask">
+					<div class="fur1">
+					  <img src="{{ image3 }}" class="img-responsive zoom-img" alt="/">
+						</div></a>
+					<a href="#" class="mask">
+					<div class="fur2">
+					  <img src="{{ image4 }}" class="img-responsive zoom-img" alt="/">
+						</div></a>
+				</div>
+					<div class="clearfix"></div>
+			</div>
+    </div>
+    <div style="clear: both">
+    <ul>
+        <br/><br/><br/>
+        <li><h4>公司名称：{{ name }}</h4></li>
+        <br/><br/><br/>
+        <li><h4>营业执照号码：{{ companyNum }}</h4></li>
+        <br/><br/><br/>
+        <li><h4>邮箱：{{ mail }}</h4></li>
+        <br/><br/><br/>
+        <li><h4>公司描述:</h4>
+            <br/>
+            <textarea style="padding: 10px;" rows="10" cols="60" readonly="readonly">{{ index }}</textarea></li>
+    </ul>
+    </div>
+        {% if examine == 'W' or examine == 'N' %}
+            <div  style="padding: 15px"><h6>*该公司尚未通过审核，暂时不能提交案例咨询</h6></div>
+        {% endif %}
+        {% if examine == 'Y' %}
+        <div  style="padding: 15px">
+            <form action="{% url 'anli:give_case' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" value="{{ company }}" name="companyid">
+                <button type="submit" >提交案例给该公司进行咨询</button>
+            </form>
+        </div>
+        {% endif %}
+	<!--script-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+			<script type="text/javascript" src="{% static 'js/nivo-lightbox.min.js'%}"></script>
+				<script type="text/javascript">
+				$(document).ready(function(){
+				    $('#nivo-lightbox-demo a').nivoLightbox({ effect: 'fade' });
+				});
+				</script>
+
+			<!---->
+    </div>
+</div>
+{% endblock body %}

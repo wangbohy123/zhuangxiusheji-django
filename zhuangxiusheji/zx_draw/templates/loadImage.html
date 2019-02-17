@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<title>paint</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
+
+    <style type="text/css">
+		select{color: #333;}
+		.htmleaf-icon{color: #fff;}
+        .img-container{
+            width: 500px;
+            height: 300px;
+            background:#F2F2F2;
+            margin-bottom:35px;
+            overflow: hidden;
+            border: 1px solid #000;
+        }
+        .img-container>img{
+            width: 500px;
+            height: 300px;
+        }
+        .img{
+            width: 500px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body onload="InitThis();" background="">
+	<div class="htmleaf-container">
+		<header class="htmleaf-header bgcolor-12">
+			<h1>在线绘图<span>来自装修设计网</span></h1>
+            <a href="{% url 'user:index' %}">返回主页</a>
+		</header>
+        <p align="center"> 点击按钮上传图片并预览，之后点击提交，便可以进入绘图板</p>
+        <form action="{% url 'draw:upload_image' %}" class="card-form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div align="center">
+                <div class="img-container"></div>
+                <input class="img-btn" type="file"  name="imageFile01">
+                <input type="submit" value="提交">
+{#                <img src="{{ person.photo_url|default_if_none:'#' }}" />#}
+            </div>
+        </form>
+    </div>
+<script>
+
+//上传图片并预览
+    function previewImg(fileInput,imgDiv){
+        if(window.FileReader){//支持FileReader的时候
+            var reader=new FileReader();
+            reader.readAsDataURL(fileInput.files[0]);
+            reader.onload=function(evt){
+                imgDiv.innerHTML="\<img src="+evt.target.result+"\>";
+            }
+        }else{//兼容ie9-
+            imgDiv.innerHTML='<div class="img" style="filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src=\'' + fileInput.value + '\)\';"></div>';
+        }
+    }
+    function selectImg(fileInputs,imgDivs){
+        var checkImg=new RegExp("(.jpg$)|(.png$)|(.bmp$)|(.jpeg$)","i");
+        var i=0;
+        for(;i<fileInputs.length&&i<imgDivs.length;i++){
+            (function(i){//立即执行函数；保存i
+                fileInputs[i].onchange=function(){
+                    if(checkImg.test(fileInputs[i].value)){
+                        previewImg(this,imgDivs[i]);
+                    }else{
+                        alert("只支持上传.jpg .png .bmp .jpeg;你的选择有误");
+                    }
+                };
+            })(i);
+        }
+
+    }
+    /* 为IE6 IE7 IE8增加document.getElementsByClassName函数 */
+    /MSIE\s*(\d+)/i.test(navigator.userAgent);
+    var isIE=parseInt(RegExp.$1?RegExp.$1:0);
+    if(isIE>0&&isIE<9){
+        document.getElementsByClassName=function(cls){
+            var els=this.getElementsByTagName('*');
+            var ell=els.length;
+            var elements=[];
+            for(var n=0;n<ell;n++){
+                var oCls=els[n].className||'';
+                if(oCls.indexOf(cls)<0)        continue;
+                oCls=oCls.split(/\s+/);
+                var oCll=oCls.length;
+                for(var j=0;j<oCll;j++){
+                    if(cls==oCls[j]){
+                        elements.push(els[n]);
+                        break;
+                    }
+                }
+            }
+            return elements;
+        }
+    }
+    var fileInputs=document.getElementsByClassName("img-btn");//文件选择按钮
+    var imgDivs=document.getElementsByClassName("img-container");//图片容器
+    selectImg(fileInputs,imgDivs);
+</script>
+
+</body>
+
+</html>

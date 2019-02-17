@@ -1,0 +1,102 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    {% block title %}
+<title>Home</title>
+    {% endblock %}
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all">
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="apparatus Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
+<!---- start-smoth-scrolling---->
+<script type="text/javascript" src="{% static 'js/move-top.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/easing.js' %}"></script>
+ <script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+			});
+		});
+
+	</script>
+</head>
+<body>
+{% block header %}
+    <!----header-banner--->
+    		<div class="header">
+			<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<a href="{% url 'user:index' %}">装修设计<span>网站</span></a>
+					</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+								<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+												<a href="#"><i class="icon4"></i></a>
+						</div>
+							<div class="clearfix"></div>
+				</div>
+				<div class="top-menu">
+					<span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/>  </span>
+						<ul>
+                            {% block bar %}
+							<li><a href="{% url 'user:index' %}" class="active">主页</a></li>
+									<li><a href="{% url 'user:login' %}">登录</a></li>
+										<li><a href="{% url 'user:select' %}">注册</a></li>
+												<li><a href="{% url 'user:gallery' %}">装修案例</a></li>
+                                                        <li><a href="{% url 'user:aboutUs' %}">关于我们</a></li>
+												<!-- script for menu -->
+							{% endblock bar %}
+                                <script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+
+						<div class="clearfix"></div>
+					</ul>
+				</div>
+                {% block content %}
+                {% endblock content %}
+            </div>
+            </div>
+{% endblock header %}
+{% block body %}
+{% endblock body %}
+{% block tail %}
+{% endblock tail %}
+    	<!--events -->
+		<div class="footer-section">
+						<div class="container">
+							<div class="footer-top">
+						<p>Copyright &copy; 2018.Company name All rights reserved. </p>
+									</div>
+							<script type="text/javascript">
+						$(document).ready(function() {
+							/*
+							var defaults = {
+					  			containerID: 'toTop', // fading element id
+								containerHoverID: 'toTopHover', // fading element hover id
+								scrollSpeed: 1200,
+								easingType: 'linear'
+					 		};
+							*/
+
+							$().UItoTop({ easingType: 'easeOutQuart' });
+
+						});
+					</script>
+				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+				</div>
+			</div>
+</body>
+</html>

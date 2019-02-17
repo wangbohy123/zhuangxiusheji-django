@@ -1,0 +1,58 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block header %}
+    	<div class="header head-top">
+			<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<a href="{% url 'user:index' %}">装修设计<span>网站</span></a>
+					</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+								<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+												<a href="#"><i class="icon4"></i></a>
+						</div>
+							<div class="clearfix"></div>
+				</div>
+				<div class="top-menu">
+					<span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/>  </span>
+						<ul>
+						    <li><a href="{% url 'user:index_for_user' %}" >主页</a></li>
+                            <li><a href="{% url 'user_center:show' %}" class="active">案例中心</a></li>
+                            <li><a href="{% url 'user_center:personal' %}">个人资料</a></li>
+                            <li><a href="{% url 'draw:image' %}">在线绘图</a></li>
+                            <li><a href="{% url 'user:del_session' %}">退出登录</a></li>
+							<script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+
+												<div class="clearfix"></div>
+					</ul>
+				</div>
+
+{% block content %}
+<div class="fir" align="center" style="padding: 60px">
+<form method="post" action="{% url 'anli:comment_handel' %}"  >
+{% csrf_token %}
+    <div class="sec" style="padding-top:70px;">
+        <p align="center" style="margin-bottom:60px;width:620px;">
+            <input type="submit" value="提交评论"  style="float:right; border-radius:5px; background-color:#009688; color:white; border: 2px solid #009688;align-items: center;">
+            <input type="hidden" value="{{ cid }}" name="cid">
+        </p>
+        <p>
+            <textarea rows="16" cols="100" name="comment_text"  style="border-radius:10px; background-color:#222; color:white;resize:none; border: 2px solid #009688;">在此输入评论</textarea>
+        </p>
+
+    </div>
+
+</form>
+</div>
+{% endblock content%}
+            </div>
+        </div>
+{% endblock header %}

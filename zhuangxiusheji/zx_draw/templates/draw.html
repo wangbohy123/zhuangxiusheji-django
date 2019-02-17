@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<title>paint</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/default.css' %}">
+	<script src="{% static 'js/jquery-1.7.2.min.js' %}" type="text/javascript"></script>
+    <script type="text/javascript" src="{% static 'js/draw.js' %}"></script>
+    <style type="text/css">
+		select{color: #333;}
+		.htmleaf-icon{color: #fff;}
+    </style>
+</head>
+<body onload="InitThis();">
+	<div class="htmleaf-container">
+		<header class="htmleaf-header bgcolor-12">
+			<h1>在线绘图<span>来自装修设计网</span></h1>
+            <a href="{% url 'user:index' %}">返回主页</a>
+		</header>
+		<div class="htmleaf-content bgcolor-3">
+			<div align="center">
+{#              background-image: /media/images_for_draw/timg02_yml0dGq.jpg#}
+                <div class="background" style="width: 800px; height: 500px;">
+
+                <canvas   name="drawImage"  id="myCanvas" width="800" height="500" style="border:2px solid black;background-size: 800px 500px;"></canvas>
+		        </div><br /><br />
+                <input type="hidden" value="{{ images }}" id="image_url">
+{#		        <button class="btn btn-primary" onclick="javascript:drawImage();return false;">Clear Area</button>    background-image: url({{ images }});   #}
+		        线宽 : <select id="selWidth">
+		            <option value="1">1</option>
+		            <option value="3"  selected="selected">3</option>
+		            <option value="5">5</option>
+		            <option value="7">7</option>
+		            <option value="9" >9</option>
+		            <option value="11">11</option>
+		        </select> 
+		        颜色 : <select id="selColor">
+		            <option value="black">黑色</option>
+		            <option value="blue" selected="selected">blue</option>
+		            <option value="red">红色</option>
+		            <option value="green">绿色</option>
+		            <option value="yellow">黄色</option>
+		            <option value="gray">灰色</option>
+		        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		        <button class="btn btn-primary" onclick="javascript:cUndo();return false;">撤销</button>
+		        <button class="btn btn-danger" onclick="javascript:cRedo();return false;">上一步</button>
+		    </div>
+		</div>
+		
+
+	</div>
+
+	
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% extends 'base/base.html' %}
+{% load staticfiles %}
+{% block header %}
+    	<div class="header head-top">
+			<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<a href="{% url 'user:index' %}">装修设计<span>网站</span></a>
+					</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+								<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+												<a href="#"><i class="icon4"></i></a>
+						</div>
+							<div class="clearfix"></div>
+				</div>
+				<div class="top-menu">
+					<span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/>  </span>
+						<ul>
+						<li><a href="{% url 'user:index_for_user' %}" >主页</a></li>
+                                     <li><a href="{% url 'user_center:show' %}" class="active">案例中心</a></li>
+                                                 <li><a href="{% url 'user_center:personal' %}">个人资料</a></li>
+							<li><a href="{% url 'draw:image' %}">在线绘图</a></li>
+                            <li><a href="{% url 'user:del_session' %}">退出登录</a></li>
+{#												<li><a href="{% url 'user:gallery' %}">装修案例</a></li>#}
+
+							<script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+
+												<div class="clearfix"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+{% endblock header %}
+{% block body %}
+    	<div class="container">
+	<div class="gallery">
+    <div>
+    <form method="post" action="{% url 'anli:showCompanies' %}">
+        {% csrf_token %}
+    选择公司装修的价格区间:
+    <select name="price"  >
+            <option  value="0-5000">5000元以下</option>
+            <option  value="5000-10000">5000到10000元</option>
+            <option  value="10000-">10000元以上</option>
+    </select>
+    &nbsp;&nbsp;&nbsp;&nbsp;选择公司装修的风格:
+    <select name="style"  >
+            <option  value="O">欧美风</option>
+            <option  value="D">东方风</option>
+    </select>
+       &nbsp;&nbsp;&nbsp; <button type="submit">查询</button>
+    </form>
+    </div></div></div>
+<div align="center" style="padding-bottom:60px;">
+
+<div align="left" style="border:5px solid #1d2821;width:80%;height:70%;border-radius:10px;padding:20px; color: brown">
+    <h3 style="margin-top:5px;" align="center">
+    这些公司已入驻本网站，点开看看吧！
+    </h3>
+    <ul>
+        {% for company in companies %}
+        <li style="margin:10px;"><a href="{% url 'anli:show_detail' %}?id={{ company.id }}" style="font-size: large">{{ company.company_name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+</div>
+{% endblock body %}

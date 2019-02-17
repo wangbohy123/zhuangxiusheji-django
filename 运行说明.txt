@@ -1,0 +1,15 @@
+         运行说明：
+
+浏览器要求：最好火狐
+python版本号：python3.6.4（64位）(3.6即可)
+django版本号：1.11.5
+需安装mysqlclient、PIL包
+
+运行前将setting.py里的数据库名改为已有的数据库，并且密码改为自己的密码
+之后生成一下迁移:python manage.py migrate
+
+django安装方法：
+pip install django==1.11.5
+
+mysqlclient安装方法：
+pip install mysqlclient

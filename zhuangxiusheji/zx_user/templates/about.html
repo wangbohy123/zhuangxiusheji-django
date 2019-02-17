@@ -1,0 +1,153 @@
+{% extends 'base/Base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="aboutus">
+<div class="container">
+<h3>about us</h3>
+<div class="about-grids">
+<div class="col-md-7 about-grids1">
+<h4>Sed ut perspiciatis unde omnis iste natus sit</h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae nunc id lacus gravida ultricies. Nulla consectetur maximus sem vel aliquet. Donec blandit condimentum varius. Mauris tincidunt, urna suscipit aliquam eleifend, augue metus maximus sapien, eu mollis tellus massa a mauris. Donec vulputate est velit, eu gravida ex sagittis eget. Integer sit amet faucibus libero. Duis sagittis gravida mauris, aliquet volutpat lorem ullamcorper ac. Phasellus massa velit, dictum in nisi vitae, gravida cursus nibh. In at metus aliquet, gravida nunc eget, lacinia purus. Sed a mi mollis, faucibus erat. Vivamus at facilisis tortor. Integer condimentum lectus sit amet .sagittis, nisl magna sodales eros, ut feugiat velit velit non turpis.nisl magna sodales eros, ut feugiat velit velit non turpis.ipsum dolor sit amet, consectetur adipiscing elit.ectus sit amet .sagittis, nisl magna sodales eros, ut feugiat velit velit non turpis.nisl magna sodales eros, </p>
+</div>
+<div class="col-md-5 about-grid2">
+<iframe src="https://player.vimeo.com/video/124902958" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}
+{% block tail %}
+
+
+
+	<!--events -->
+
+		<div class="about">
+			<div class="container">
+				<div class="about-grids">
+					<div class="col-md-5 about-grid">
+						<h3>our management</h3>
+							<div class="about-info">
+								<h4>Casaerta voluptatem adminima veniam</h4>
+									<p>Ut pharetra aue nec augentumonec in velit vel ipsum auliypam elit magna Donec porta diam eu massa. Quisue diam lorem intdum vitaapibus ac scelerisque.</p>
+										<h4>Ut pharetra augentumonec velit ipsum</h4>
+											<p>Ut pharetra aue nec augentumonec in velit vel ipsum auliypam elit magna Donec porta diam eu massa. Quisue diam lorem intdum vitaapibus ac scelerisque.</p>
+												<h4>Casaerta voluptatem adminima veniam</h4>
+													<p>Ut pharetra aue nec augentumonec in velit vel ipsum auliypam elit magna Donec porta diam eu massa. Quisue diam lorem intdum vitaapibus ac scelerisque.</p>
+							</div>
+					</div>
+					<div class="col-md-7 about-grid3">
+					<div class="col-md-6 about-grid1">
+					<h3>info& advice</h3>
+						<img src="images/p6.jpg" class="img-responsive" alt="/">
+						 <h4>Casaerta voluptatem uno </h4>
+							<p>Aliquam leote llus dolor dapibus eget elementum vel curss eleifend elit. Aenean aucto. wisi et urna. Aliqat. volutpat. Duisac lacuestibulum libero nisl porta scelerie</p>
+					</div>
+					<div class="col-md-6 about-grid1">
+					<h3>about us</h3>
+						<img src="images/p5.jpg" class="img-responsive" alt="/">
+						 <h4>Casaerta voluptatem uno </h4>
+							<p>Aliquam leote llus dolor dapibus eget elementum vel curss eleifend elit. Aenean aucto. wisi et urna. Aliqat. volutpat. Duisac lacuestibulum libero nisl porta scelerie</p>
+					</div>
+					<div class="clearfix"></div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-section">
+
+							<script type="text/javascript">
+						$(document).ready(function() {
+							/*
+							var defaults = {
+					  			containerID: 'toTop', // fading element id
+								containerHoverID: 'toTopHover', // fading element hover id
+								scrollSpeed: 1200,
+								easingType: 'linear'
+					 		};
+							*/
+
+							$().UItoTop({ easingType: 'easeOutQuart' });
+
+						});
+					</script>
+				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+				</div>
+			</div>
+
+        <div class="copyrights"></div>
+			<div class="banner-bottom">
+				<div class="container">
+				<ul id="flexiselDemo3">
+				 <li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							  <img src="{% static 'images/p1.jpg' %}" class="img-responsive" alt="/">
+							</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							    <img src="{% static 'images/p2.jpg' %}" class="img-responsive" alt="/">
+							</div>
+						</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							<img src="{% static 'images/p3.jpg' %}" class="img-responsive" alt="/">
+							</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							 <img src="{% static 'images/p4.jpg' %}" class="img-responsive" alt="/">
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							 <img src="{% static 'images/p19.jpg' %}" class="img-responsive" alt="/">
+						</div>
+					</div>
+				</li>
+	     	</ul>
+		  </div>
+			<script type="text/javascript">
+				 $(window).load(function() {
+					$("#flexiselDemo3").flexisel({
+						visibleItems:3,
+						animationSpeed: 1000,
+						autoPlay: true,
+						autoPlaySpeed: 3000,
+						pauseOnHover: true,
+						enableResponsiveBreakpoints: true,
+				    	responsiveBreakpoints: {
+				    		portrait: {
+				    			changePoint:480,
+				    			visibleItems:2
+				    		},
+				    		landscape: {
+				    			changePoint:640,
+				    			visibleItems:2
+				    		},
+				    		tablet: {
+				    			changePoint:768,
+				    			visibleItems:3
+				    		}
+				    	}
+				    });
+
+				});
+			   </script>
+			   <script type="text/javascript" src="{% static 'js/jquery.flexisel.js' %}"></script>
+				</div>
+		<!-- events -->
+
+
+{% endblock tail %}

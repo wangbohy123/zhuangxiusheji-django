@@ -1,0 +1,153 @@
+{% extends 'base/Base.html' %}
+{% load staticfiles %}
+{% block title %}
+    <title>gallery</title>
+{% endblock title %}
+{% block header %}
+    	<div class="header head-top">
+			<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<a href="{% url 'user:index' %}">装修设计<span>网站</span></a>
+					</div>
+						<div class="social-icons">
+							<a href="#"><i class="icon1"></i></a>
+								<a href="#"><i class="icon2"></i></a>
+										<a href="#"><i class="icon3"></i></a>
+												<a href="#"><i class="icon4"></i></a>
+						</div>
+							<div class="clearfix"></div>
+				</div>
+				<div class="top-menu">
+					<span class="menu"><img src="{% static 'images/menu.png' %}" alt=""/>  </span>
+						<ul>
+						<li><a href="{% url 'user:index' %}" >主页</a></li>
+                                     <li><a href="{% url 'user:login' %}">登录</a></li>
+										<li><a href="{% url 'user:select' %}">注册</a></li>
+												<li><a href="{% url 'user:gallery' %}" class="active">装修案例</a></li>
+							                        <li><a href="#">关于我们</a></li>
+                            <!-- script for menu -->
+							<script>
+							 $("span.menu").click(function(){
+							 $(".top-menu ul").slideToggle("slow" , function(){
+							 });
+							 });
+							 </script>
+							<!-- //script for menu -->
+
+												<div class="clearfix"></div>
+					</ul>
+				</div>
+			</div>
+		</div>
+{% endblock header %}
+{% block body %}
+	<div class="container">
+	<div class="gallery">
+		<h3>设计样例</h3>
+		<div class="products-bottom">
+			<div class="col-md-4 work-grid">
+				<div id="nivo-lightbox-demo">			
+					<a  href="{% static 'images/p7.jpg' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+						<img src="{% static 'images/p7.jpg' %}" class="img-responsive " alt=""/>
+						<div class="rotate">
+							<i> </i>	
+						</div>				
+					 </a> 
+				</div>
+			</div>			
+			<div class="col-md-4 work-grid">
+				<div id="nivo-lightbox-demo">			
+					<a  href="{% static 'images/p8.jpg' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+						<img src="{% static 'images/p8.jpg' %}" class="img-responsive " alt=""/>
+						<div class="rotate">
+							<i> </i>	
+						</div>				
+					 </a> 
+				</div>
+			</div>
+			<div class="col-md-4 work-grid">	
+				<div id="nivo-lightbox-demo">			
+					<a  href="{% static 'images/p9.jpg' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+						<img src="{% static 'images/p9.jpg' %}" class="img-responsive " alt=""/>
+						<div class="rotate">
+							<i> </i>	
+						</div>				
+					 </a> 
+				</div>	
+			</div>	
+			<div class="col-md-4 work-grid">
+				<div id="nivo-lightbox-demo">			
+					<a  href="{% static 'images/p10.jpg' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+						<img src="{% static 'images/p10.jpg' %}" class="img-responsive " alt=""/>
+						<div class="rotate">
+							<i> </i>	
+						</div>				
+					 </a> 
+				</div>
+			</div>	
+			<div class="col-md-4 work-grid">
+				<div id="nivo-lightbox-demo">			
+					<a  href="{% static 'images/p11.jpg' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+						<img src="{% static 'images/p11.jpg' %}" class="img-responsive " alt=""/>
+						<div class="rotate">
+							<i> </i>	
+						</div>				
+					 </a> 
+				</div>
+			</div>	
+			<div class="col-md-4 work-grid">
+				<div id="nivo-lightbox-demo">			
+					<a  href="{% static 'images/p12.jpg' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+						<img src="{% static 'images/p12.jpg' %}" class="img-responsive " alt=""/>
+						<div class="rotate">
+							<i> </i>	
+						</div>				
+					 </a> 
+				</div>
+			</div>	
+			<div class="col-md-4 work-grid">
+				<div id="nivo-lightbox-demo">			
+					<a  href="{% static 'images/p13.jpg' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+						<img src="{% static 'images/p13.jpg' %}" class="img-responsive " alt=""/>
+						<div class="rotate">
+							<i> </i>	
+						</div>				
+					 </a> 
+				</div>
+			</div>	
+			<div class="col-md-4 work-grid">
+				<div id="nivo-lightbox-demo">			
+					<a  href="{% static 'images/p14.jpg' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+						<img src="{% static 'images/p14.jpg' %}" class="img-responsive " alt=""/>
+						<div class="rotate">
+							<i> </i>	
+						</div>				
+					 </a> 
+				</div>
+			</div>	
+			<div class="col-md-4 work-grid">
+				<div id="nivo-lightbox-demo">			
+					<a  href="{% static 'images/p15.jpg' %}" data-lightbox-gallery="gallery1" id="nivo-lightbox-demo">
+						<img src="{% static 'images/p15.jpg' %}" class="img-responsive " alt=""/>
+						<div class="rotate">
+							<i> </i>	
+						</div>				
+					 </a> 
+				</div>
+			</div>				
+			<div class="clearfix"> </div>	
+		</div>
+	</div>
+	<!--script-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}">
+			<script type="text/javascript" src="{% static 'js/nivo-lightbox.min.js'%}"></script>
+				<script type="text/javascript">
+				$(document).ready(function(){
+				    $('#nivo-lightbox-demo a').nivoLightbox({ effect: 'fade' });
+				});
+				</script>
+
+			<!---->
+</div>
+{% endblock body %}

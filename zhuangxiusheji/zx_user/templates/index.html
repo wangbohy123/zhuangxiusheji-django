@@ -1,0 +1,118 @@
+{% extends 'base/Base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="index-banner">
+    <div class="wmuSlider example1">
+        <div class="wmuSliderWrapper">
+            <article style="position: absolute; width: 100%; opacity: 0;">
+                <div class="banner-wrap">
+                    <div class="banner_center">
+                        <h1>为你提供良好的装修设计服务</h1>
+                            <p>欢迎来到这里，我们拥有最优质的资源以及最自由的交流平台</p>
+                    </div>
+                </div>
+            </article>
+           <article style="position: relative; width: 100%; opacity: 1;">
+                <div class="banner-wrap">
+                  <div class="banner_center">
+                                <h1>为你提供免费的交流平台</h1>
+                                    <p>你可以自由的与别人进行交流</p>
+                            </div>
+                  </div>
+            </article>
+            <article style="position: absolute; width: 100%; opacity: 0;">
+                <div class="banner-wrap">
+                   <div class="banner_center">
+                                <h1>为你提供专业的技术指导</h1>
+                                    <p>你可以咨询专业的装修公司，与其交流</p>
+                   </div>
+                </div>
+             </article>
+             <ul class="wmuSliderPagination">
+             <li><a href="#" class="">0</a></li>
+             <li><a href="#" class="">1</a></li>
+             <li><a href="#" class="">2</a></li>
+             </ul>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/jquery.wmuSlider.js' %}"></script>
+          <script>
+            $('.example1').wmuSlider();
+         </script>
+{% endblock content %}
+{% block tail %}
+        <div class="copyrights"></div>
+			<div class="banner-bottom">
+				<div class="container">
+				<ul id="flexiselDemo3">
+				 <li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							  <img src="{% static 'images/p1.jpg' %}" class="img-responsive" alt="/">
+							</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							    <img src="{% static 'images/p2.jpg' %}" class="img-responsive" alt="/">
+							</div>
+						</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							<img src="{% static 'images/p3.jpg' %}" class="img-responsive" alt="/">
+							</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							 <img src="{% static 'images/p4.jpg' %}" class="img-responsive" alt="/">
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="biseller-column">
+							<div class="banner-grid">
+							 <img src="{% static 'images/p19.jpg' %}" class="img-responsive" alt="/">
+						</div>
+					</div>
+				</li>
+	     	</ul>
+		  </div>
+			<script type="text/javascript">
+				 $(window).load(function() {
+					$("#flexiselDemo3").flexisel({
+						visibleItems:3,
+						animationSpeed: 1000,
+						autoPlay: true,
+						autoPlaySpeed: 3000,    		
+						pauseOnHover: true,
+						enableResponsiveBreakpoints: true,
+				    	responsiveBreakpoints: { 
+				    		portrait: { 
+				    			changePoint:480,
+				    			visibleItems:2
+				    		}, 
+				    		landscape: { 
+				    			changePoint:640,
+				    			visibleItems:2
+				    		},
+				    		tablet: { 
+				    			changePoint:768,
+				    			visibleItems:3
+				    		}
+				    	}
+				    });
+				    
+				});
+			   </script>
+			   <script type="text/javascript" src="{% static 'js/jquery.flexisel.js' %}"></script>
+				</div>
+		<!-- events -->
+
+
+{% endblock tail %}
